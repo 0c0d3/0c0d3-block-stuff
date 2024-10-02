@@ -12,4 +12,4 @@ ETH: https://www.blockchain.com/explorer/addresses/eth/0xD8f7284e539070fa13F51a9
 
 USDT: https://www.okx.com/web3/explorer/optimism/address/0xd8f7284e539070fa13f51a99c051c657ff3c8261
 
-https://en.liberapay.com/0c0d3/
+USD: https://paypal.me/0c0d3
