@@ -11,7 +11,7 @@ function isThirdPartyRequest(details) {
 }
 
 // Block specific resource types and headers for enhanced privacy
-chrome.webRequest.onBeforeRequest.addListener(
+browser.webRequest.onBeforeRequest.addListener(
     function(details) {
         const blockedTypes = ["stylesheet", "font", "image", "sub_frame", "object", "script"];
 
@@ -28,7 +28,7 @@ chrome.webRequest.onBeforeRequest.addListener(
 );
 
 // Block outgoing cookies by removing the Cookie header
-chrome.webRequest.onBeforeSendHeaders.addListener(
+browser.webRequest.onBeforeSendHeaders.addListener(
     function(details) {
         console.log("Blocked outgoing cookies for:", details.url);
         
@@ -46,7 +46,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
 );
 
 // Block incoming cookies by removing the Set-Cookie header
-chrome.webRequest.onHeadersReceived.addListener(
+browser.webRequest.onHeadersReceived.addListener(
     function(details) {
         console.log("Blocked incoming cookies for:", details.url);
         
@@ -64,7 +64,7 @@ chrome.webRequest.onHeadersReceived.addListener(
 );
 
 // Block fingerprinting headers such as User-Agent and geolocation
-chrome.webRequest.onBeforeSendHeaders.addListener(
+browser.webRequest.onBeforeSendHeaders.addListener(
     function(details) {
         console.log("Blocking fingerprinting headers for:", details.url);
 
@@ -87,7 +87,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
 );
 
 // Block access to specific fingerprinting APIs
-chrome.webRequest.onBeforeRequest.addListener(
+browser.webRequest.onBeforeRequest.addListener(
     function(details) {
         const fingerprintingAPIs = [
             "navigator.permissions",
@@ -113,7 +113,7 @@ chrome.webRequest.onBeforeRequest.addListener(
 );
 
 // Block CSS requests
-chrome.webRequest.onBeforeRequest.addListener(
+browser.webRequest.onBeforeRequest.addListener(
     function(details) {
         if (details.type === "stylesheet") {
             console.log("Blocked CSS request:", details.url);
@@ -126,7 +126,7 @@ chrome.webRequest.onBeforeRequest.addListener(
 );
 
 // Block access to specific headers that can reveal browser and OS information
-chrome.webRequest.onBeforeSendHeaders.addListener(
+browser.webRequest.onBeforeSendHeaders.addListener(
     function(details) {
         const browserOSHeadersToBlock = [
             "user-agent",          // Block User-Agent
